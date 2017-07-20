@@ -12,6 +12,8 @@
 		A3E4072E1F214CD90033CDFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3E4072D1F214CD90033CDFC /* Assets.xcassets */; };
 		A3E407311F214CD90033CDFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3E4072F1F214CD90033CDFC /* LaunchScreen.storyboard */; };
 		A3E4073C1F214CD90033CDFC /* Credit_Card_ValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E4073B1F214CD90033CDFC /* Credit_Card_ValidatorTests.swift */; };
+		A3E4074B1F2152D90033CDFC /* CreditCardNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E4074A1F2152D90033CDFC /* CreditCardNumberTextField.swift */; };
+		A3E407511F215FB30033CDFC /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E407501F215FB30033CDFC /* String+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,8 @@
 		A3E407371F214CD90033CDFC /* Credit Card ValidatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Credit Card ValidatorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3E4073B1F214CD90033CDFC /* Credit_Card_ValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credit_Card_ValidatorTests.swift; sourceTree = "<group>"; };
 		A3E4073D1F214CD90033CDFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A3E4074A1F2152D90033CDFC /* CreditCardNumberTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardNumberTextField.swift; sourceTree = "<group>"; };
+		A3E407501F215FB30033CDFC /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,10 +80,11 @@
 			isa = PBXGroup;
 			children = (
 				A3E407261F214CD90033CDFC /* AppDelegate.swift */,
-				A3E407281F214CD90033CDFC /* MainViewController.swift */,
-				A3E4072D1F214CD90033CDFC /* Assets.xcassets */,
-				A3E4072F1F214CD90033CDFC /* LaunchScreen.storyboard */,
-				A3E407321F214CD90033CDFC /* Info.plist */,
+				A3E407461F2151760033CDFC /* ViewControllers */,
+				A3E407481F2151850033CDFC /* ViewModels */,
+				A3E407471F21517F0033CDFC /* Views */,
+				A3E4074F1F215F760033CDFC /* Extensions */,
+				A3E407491F21518A0033CDFC /* Resources */,
 			);
 			path = "Credit Card Validator";
 			sourceTree = "<group>";
@@ -91,6 +96,55 @@
 				A3E4073D1F214CD90033CDFC /* Info.plist */,
 			);
 			path = "Credit Card ValidatorTests";
+			sourceTree = "<group>";
+		};
+		A3E407461F2151760033CDFC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A3E407281F214CD90033CDFC /* MainViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A3E407471F21517F0033CDFC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A3E4074C1F2159130033CDFC /* CreditCard */,
+				A3E4072F1F214CD90033CDFC /* LaunchScreen.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		A3E407481F2151850033CDFC /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		A3E407491F21518A0033CDFC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A3E4072D1F214CD90033CDFC /* Assets.xcassets */,
+				A3E407321F214CD90033CDFC /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		A3E4074C1F2159130033CDFC /* CreditCard */ = {
+			isa = PBXGroup;
+			children = (
+				A3E4074A1F2152D90033CDFC /* CreditCardNumberTextField.swift */,
+			);
+			name = CreditCard;
+			sourceTree = "<group>";
+		};
+		A3E4074F1F215F760033CDFC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A3E407501F215FB30033CDFC /* String+Extension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +252,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3E407291F214CD90033CDFC /* MainViewController.swift in Sources */,
+				A3E4074B1F2152D90033CDFC /* CreditCardNumberTextField.swift in Sources */,
+				A3E407511F215FB30033CDFC /* String+Extension.swift in Sources */,
 				A3E407271F214CD90033CDFC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
