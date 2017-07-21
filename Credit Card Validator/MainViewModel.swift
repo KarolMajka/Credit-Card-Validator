@@ -11,6 +11,8 @@ import UIKit
 // MARK: - MainViewModelDelegate protocol
 protocol MainViewModelDelegate {
     func validateMessageDidChange(_ message: String)
+    func hideLoadingView()
+    func showLoadingView()
 }
 
 // MARK: - MainViewModel
@@ -32,9 +34,10 @@ class MainViewModel {
 // MARK: Public methods
 extension MainViewModel {
     public func validate(creditCard: String) {
+        self.delegate?.showLoadingView()
         self.networking.download(creditCard: creditCard, block: { creditCard in
             DispatchQueue.main.async {
-                print(creditCard.valid)
+                self.delegate?.hideLoadingView()
                 if creditCard.valid {
                     self.validateMessage = "Credit Card is valid"
                 } else {
@@ -43,6 +46,7 @@ extension MainViewModel {
             }
         }, error: { error in
             DispatchQueue.main.async {
+                self.delegate?.hideLoadingView()
                 self.validateMessage = error.localizedDescription
             }
         })
