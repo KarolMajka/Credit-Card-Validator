@@ -34,7 +34,11 @@ extension MainViewModel {
         self.networking.download(creditCard: creditCard, block: { creditCard in
             DispatchQueue.main.async {
                 print(creditCard.valid)
-                self.validateMessage = "Credit Card is valid"
+                if creditCard.valid {
+                    self.validateMessage = "Credit Card is valid"
+                } else {
+                    self.validateMessage = "Credit Card is invalid"
+                }
             }
         }, error: { error in
             DispatchQueue.main.async {
