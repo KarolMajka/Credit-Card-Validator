@@ -36,25 +36,6 @@ fileprivate extension CreditCardGenerator {
             array[i] = random(from: 1, to: 9)
         }
     }
-    
-    func isValid() -> Bool {
-        var duplicateArray = array
-        
-        for i in 0...CreditCardGenerator.digits-1 {
-            if i%2 == 0 {
-                duplicateArray[i] *= 2
-                if duplicateArray[i] >= 10 {
-                    duplicateArray[i] = duplicateArray[i]%10 + duplicateArray[i]/10
-                }
-            }
-        }
-        let sum = duplicateArray.reduce(0, +)
-        if sum%10 == 0 {
-            return true
-        } else {
-            return false
-        }
-    }
 }
 
 // MARK: Public methods
@@ -76,6 +57,25 @@ extension CreditCardGenerator {
     public func generate() {
         let creditCardType = CreditCardType.init(rawValue: random(from: 0, to: 1))!
         self.generate(creditCardType)
+    }
+    
+    public func isValid() -> Bool {
+        var duplicateArray = array
+        
+        for i in 0...CreditCardGenerator.digits-1 {
+            if i%2 == 0 {
+                duplicateArray[i] *= 2
+                if duplicateArray[i] >= 10 {
+                    duplicateArray[i] = duplicateArray[i]%10 + duplicateArray[i]/10
+                }
+            }
+        }
+        let sum = duplicateArray.reduce(0, +)
+        if sum%10 == 0 {
+            return true
+        } else {
+            return false
+        }
     }
     
     public func toString() -> String {
