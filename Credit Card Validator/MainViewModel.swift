@@ -20,7 +20,7 @@ class MainViewModel {
     
     // MARK: Fileprivate properties
     fileprivate let networking = NetworkLoader.shared
-    fileprivate let generator = CreditCardGenerator.shared
+    fileprivate let generator = CreditCardGenerator()
     
     // MARK: Public properties
     public var delegate: MainViewModelDelegate?

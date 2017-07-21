@@ -243,7 +243,6 @@ extension MainViewController: CreditCardDelegate {
 // MARK: MainViewModelDelegate
 extension MainViewController: MainViewModelDelegate {
     func validateMessageDidChange(_ message: String) {
-        print(message)
         self.validateLabel.text = message
     }
 

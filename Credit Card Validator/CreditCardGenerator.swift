@@ -23,14 +23,6 @@ class CreditCardGenerator {
     
     // MARK: Public properties
     var array: [Int] = Array(repeating: 0, count: CreditCardGenerator.digits)
-    
-    // MARK: Shared Instance
-    private init() { }
-    
-    static let shared: CreditCardGenerator = {
-        let instance = CreditCardGenerator()
-        return instance
-    }()
 }
 
 // MARK: Helpers
