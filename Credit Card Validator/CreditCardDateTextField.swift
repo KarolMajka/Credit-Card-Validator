@@ -50,10 +50,6 @@ extension CreditCardDateTextField: UITextFieldDelegate {
             return true
         }
         
-        defer {
-            textField.text = self.reformated(textField.text!)
-        }
-        
         let denseString = string.getString(withoutSeparator: self.separator)
         let charset = CharacterSet(charactersIn: "1234567890").inverted
         if denseString.rangeOfCharacter(from: charset) != nil {
@@ -65,10 +61,12 @@ extension CreditCardDateTextField: UITextFieldDelegate {
         if proposeString.getString(withoutSeparator: self.separator).length() > self.requiredDigits {
             return false
         }
-        return true
+        
+        defer {
+            textField.text = self.reformated(proposeString)
+        }
+        return false
     }
-    
-    
 }
 
 // MARK: CreditCard methods
