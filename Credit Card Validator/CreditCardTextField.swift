@@ -27,17 +27,6 @@ public class CreditCardTextField: UITextField, CreditCardProtocol {
     
     // MARK: Internal properties
     internal var separator: String { get { return "" } }
-    internal var number: String = "" {
-        didSet {
-            
-            if self.isFilled != (self.number.getString(withoutSeparator: self.separator).length() >= self.requiredDigits) {
-                self.isFilled = !self.isFilled
-            } else if number.isEmpty {
-                self.delegateMethods?.isEmpty(self)
-            }
-            self.didChangeValue(forKey: "number")
-        }
-    }
     
     // MARK: Public properties
     public var delegateMethods: CreditCardDelegate?
@@ -46,6 +35,17 @@ public class CreditCardTextField: UITextField, CreditCardProtocol {
         didSet {
             self.delegateMethods?.filled(self.isFilled, forTextField: self)
             self.didChangeValue(forKey: "isFilled")
+        }
+    }
+    public var number: String = "" {
+        didSet {
+            
+            if self.isFilled != (self.number.getString(withoutSeparator: self.separator).length() >= self.requiredDigits) {
+                self.isFilled = !self.isFilled
+            } else if number.isEmpty {
+                self.delegateMethods?.isEmpty(self)
+            }
+            self.didChangeValue(forKey: "number")
         }
     }
     

@@ -18,6 +18,7 @@ class MainViewModel {
     
     // MARK: Fileprivate properties
     fileprivate let networking = NetworkLoader.shared
+    fileprivate let generator = CreditCardGenerator.shared
     
     // MARK: Public properties
     public var delegate: MainViewModelDelegate?
@@ -45,5 +46,18 @@ extension MainViewModel {
                 self.validateMessage = error.localizedDescription
             }
         })
+    }
+    
+    func generate() -> String {
+        self.generator.generate()
+        var creditCardNumber = self.generator.toString()
+        var creditCard = ""
+        for (i, c) in creditCardNumber.characters.enumerated() {
+            if i%4 == 0 && i > 0 {
+                creditCard += " "
+            }
+            creditCard += String(c)
+        }
+        return creditCard
     }
 }

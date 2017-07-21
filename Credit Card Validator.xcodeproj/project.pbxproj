@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A36C085B1F22380200563BFC /* CreditCardGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36C085A1F22380200563BFC /* CreditCardGenerator.swift */; };
 		A3CA7EE41F21F69A00630F87 /* CreditCardDateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CA7EE31F21F69A00630F87 /* CreditCardDateTextField.swift */; };
 		A3CA7EE61F21F74F00630F87 /* CreditCardCVCTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CA7EE51F21F74F00630F87 /* CreditCardCVCTextField.swift */; };
 		A3CA7EE81F22121000630F87 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CA7EE71F22121000630F87 /* MainViewModel.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A36C085A1F22380200563BFC /* CreditCardGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardGenerator.swift; sourceTree = "<group>"; };
 		A3CA7EE31F21F69A00630F87 /* CreditCardDateTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardDateTextField.swift; sourceTree = "<group>"; };
 		A3CA7EE51F21F74F00630F87 /* CreditCardCVCTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardCVCTextField.swift; sourceTree = "<group>"; };
 		A3CA7EE71F22121000630F87 /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -72,6 +74,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A36C085C1F22388500563BFC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A36C085A1F22380200563BFC /* CreditCardGenerator.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		A3CA7EE91F22136600630F87 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +126,7 @@
 				A3CA7EEC1F2216C400630F87 /* Models */,
 				A3E407471F21517F0033CDFC /* Views */,
 				A3CA7EE91F22136600630F87 /* Networking */,
+				A36C085C1F22388500563BFC /* Helpers */,
 				A3E4074F1F215F760033CDFC /* Extensions */,
 				A3E407491F21518A0033CDFC /* Resources */,
 			);
@@ -296,6 +307,7 @@
 				A3E407531F21EE1C0033CDFC /* CreditCardTextField.swift in Sources */,
 				A3E407511F215FB30033CDFC /* String+Extension.swift in Sources */,
 				A3CA7EF01F22174800630F87 /* BincodesError.swift in Sources */,
+				A36C085B1F22380200563BFC /* CreditCardGenerator.swift in Sources */,
 				A3CA7EEE1F2216DF00630F87 /* CreditCard.swift in Sources */,
 				A3E407271F214CD90033CDFC /* AppDelegate.swift in Sources */,
 				A3CA7EE81F22121000630F87 /* MainViewModel.swift in Sources */,
