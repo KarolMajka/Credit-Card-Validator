@@ -17,7 +17,6 @@ public class CreditCardDateTextField: CreditCardTextField {
     // MARK: Internal properties
     internal override var separator: String { get { return "/" } }
     
-    
     // MARK: Public properties
     public override var requiredDigits: Int { get { return 4 } }
     
@@ -57,7 +56,7 @@ extension CreditCardDateTextField: UITextFieldDelegate {
         if proposeString.getString(withoutSeparator: self.separator).length() > self.requiredDigits {
             return false
         }
-        
+
         defer {
             textField.text = self.reformated(proposeString)
             self.number = textField.text!

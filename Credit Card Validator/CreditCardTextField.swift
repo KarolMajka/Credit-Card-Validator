@@ -11,10 +11,11 @@ import UIKit
 // MARK: - CreditCardDelegate protocol
 public protocol CreditCardDelegate {
     func filled(_ filled: Bool, forTextField textField: UITextField)
+    func isEmpty(_ textField: UITextField)
 }
 
 // MARK: - CreditCard protocol
-internal protocol CreditCard {
+internal protocol CreditCardProtocol {
     var number: String { get }
     var requiredDigits: Int { get }
     var isFilled: Bool { get }
@@ -22,28 +23,31 @@ internal protocol CreditCard {
 }
 
 // MARK: - CreditCardTextField class
-public class CreditCardTextField: UITextField, CreditCard {
+public class CreditCardTextField: UITextField, CreditCardProtocol {
     
-    // MARK: Public properties
-    public var delegateMethods: CreditCardDelegate?
-    public var requiredDigits: Int { get { return 0 } }
-    public var number: String = "" {
+    // MARK: Internal properties
+    internal var separator: String { get { return "" } }
+    internal var number: String = "" {
         didSet {
+            
             if self.isFilled != (self.number.getString(withoutSeparator: self.separator).length() >= self.requiredDigits) {
                 self.isFilled = !self.isFilled
+            } else if number.isEmpty {
+                self.delegateMethods?.isEmpty(self)
             }
             self.didChangeValue(forKey: "number")
         }
     }
+    
+    // MARK: Public properties
+    public var delegateMethods: CreditCardDelegate?
+    public var requiredDigits: Int { get { return 0 } }
     public var isFilled: Bool = false {
         didSet {
             self.delegateMethods?.filled(self.isFilled, forTextField: self)
             self.didChangeValue(forKey: "isFilled")
         }
     }
-    
-    // MARK: Internal properties
-    internal var separator: String { get { return "" } }
     
     // MARK: Initializations
     override init(frame: CGRect) {
@@ -62,5 +66,9 @@ extension CreditCardTextField {
     internal func reformated(_ text: String) -> String {
         let denseText = text.getString(withoutSeparator: self.separator)
         return denseText
+    }
+    
+    public func getNumber() -> String {
+        return self.number.getString(withoutSeparator: self.separator)
     }
 }
