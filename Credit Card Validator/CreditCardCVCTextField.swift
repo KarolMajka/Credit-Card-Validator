@@ -1,30 +1,27 @@
 //
-//  CreditCardNumberTextField.swift
+//  CreditCardCVCTextField.swift
 //  Credit Card Validator
 //
-//  Created by Karol Majka on 20/07/2017.
+//  Created by Karol Majka on 21/07/2017.
 //  Copyright © 2017 Karol Majka. All rights reserved.
 //
 
 import UIKit
 
-// MARK: - CreditCardNumberTextField class
-public class CreditCardNumberTextField: CreditCardTextField {
-    
+// MARK: - CreditCardCVCTextField class
+public class CreditCardCVCTextField: CreditCardTextField {
+
     // MARK: Fileprivate properties
-    fileprivate static let placeholderText = "1234 5678 9012 3456"
-    
-    // MARK: Internal properties
-    internal override var separator: String { get { return " " } }
+    fileprivate static let placeholderText = "CVC"
     
     // MARK: Public properties
-    public override var requiredDigits: Int { get { return 16 } }
+    public override var requiredDigits: Int { get { return 3 } }
     
     // MARK: Initializations
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.placeholder = CreditCardNumberTextField.placeholderText
+        self.placeholder = CreditCardCVCTextField.placeholderText
         self.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         self.delegate = self
     }
@@ -34,13 +31,8 @@ public class CreditCardNumberTextField: CreditCardTextField {
     }
 }
 
-// MARK: Helpers
-fileprivate extension CreditCardNumberTextField {
-    
-}
-
 // MARK: UITextFieldDelegate
-extension CreditCardNumberTextField: UITextFieldDelegate {
+extension CreditCardCVCTextField: UITextFieldDelegate {
     func textFieldDidChange(_ textField: UITextField) {
         textField.text = self.reformated(textField.text!)
         self.number = textField.text!
@@ -63,21 +55,5 @@ extension CreditCardNumberTextField: UITextFieldDelegate {
             return false
         }
         return true
-    }
-    
-}
-
-// MARK: CreditCard methods
-extension CreditCardNumberTextField {
-    internal override func reformated(_ text: String) -> String {
-        let denseText = super.reformated(text)
-        var newString = ""
-        for (i, c) in denseText.characters.enumerated() {
-            if i%4 == 0 && i > 0 {
-                newString += self.separator
-            }
-            newString += String(c)
-        }
-        return newString
     }
 }

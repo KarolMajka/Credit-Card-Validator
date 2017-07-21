@@ -9,8 +9,8 @@
 import UIKit
 
 extension String {
-    func getNumberWithoutWhitespaces() -> String {
-        return self.components(separatedBy: .whitespaces).joined()
+    func getString(withoutSeparator separator: String) -> String {
+        return self.components(separatedBy: separator).joined()
     }
     
     func length() -> Int {

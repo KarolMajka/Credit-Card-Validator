@@ -1,30 +1,31 @@
 //
-//  CreditCardNumberTextField.swift
+//  CreditCardDateTextField.swift
 //  Credit Card Validator
 //
-//  Created by Karol Majka on 20/07/2017.
+//  Created by Karol Majka on 21/07/2017.
 //  Copyright © 2017 Karol Majka. All rights reserved.
 //
 
 import UIKit
 
-// MARK: - CreditCardNumberTextField class
-public class CreditCardNumberTextField: CreditCardTextField {
-    
+// MARK: - CreditCardDateTextField class
+public class CreditCardDateTextField: CreditCardTextField {
+
     // MARK: Fileprivate properties
-    fileprivate static let placeholderText = "1234 5678 9012 3456"
+    fileprivate static let placeholderText = "MM/YY"
     
     // MARK: Internal properties
-    internal override var separator: String { get { return " " } }
+    internal override var separator: String { get { return "/" } }
+    
     
     // MARK: Public properties
-    public override var requiredDigits: Int { get { return 16 } }
+    public override var requiredDigits: Int { get { return 4 } }
     
     // MARK: Initializations
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.placeholder = CreditCardNumberTextField.placeholderText
+        self.placeholder = CreditCardDateTextField.placeholderText
         self.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         self.delegate = self
     }
@@ -32,23 +33,25 @@ public class CreditCardNumberTextField: CreditCardTextField {
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
-
-// MARK: Helpers
-fileprivate extension CreditCardNumberTextField {
     
+//    override internal func getStringWithoutWhitespaces(_ string: String) -> String {
+//        return string.components(separatedBy: self.separator).joined()
+//    }
 }
 
 // MARK: UITextFieldDelegate
-extension CreditCardNumberTextField: UITextFieldDelegate {
+extension CreditCardDateTextField: UITextFieldDelegate {
     func textFieldDidChange(_ textField: UITextField) {
-        textField.text = self.reformated(textField.text!)
         self.number = textField.text!
     }
     
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if string.isEmpty {
             return true
+        }
+        
+        defer {
+            textField.text = self.reformated(textField.text!)
         }
         
         let denseString = string.getString(withoutSeparator: self.separator)
@@ -65,19 +68,25 @@ extension CreditCardNumberTextField: UITextFieldDelegate {
         return true
     }
     
+    
 }
 
 // MARK: CreditCard methods
-extension CreditCardNumberTextField {
+extension CreditCardDateTextField {
     internal override func reformated(_ text: String) -> String {
         let denseText = super.reformated(text)
         var newString = ""
         for (i, c) in denseText.characters.enumerated() {
-            if i%4 == 0 && i > 0 {
+            newString += String(c)
+            if i == 1 {
                 newString += self.separator
             }
-            newString += String(c)
         }
         return newString
     }
+}
+
+// MARK: Internal method
+extension CreditCardDateTextField {
+
 }
