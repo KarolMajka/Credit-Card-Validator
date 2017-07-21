@@ -33,10 +33,6 @@ public class CreditCardDateTextField: CreditCardTextField {
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-//    override internal func getStringWithoutWhitespaces(_ string: String) -> String {
-//        return string.components(separatedBy: self.separator).joined()
-//    }
 }
 
 // MARK: UITextFieldDelegate
@@ -64,6 +60,7 @@ extension CreditCardDateTextField: UITextFieldDelegate {
         
         defer {
             textField.text = self.reformated(proposeString)
+            self.number = textField.text!
         }
         return false
     }
