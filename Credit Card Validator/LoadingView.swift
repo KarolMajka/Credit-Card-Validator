@@ -12,9 +12,11 @@ import PureLayout
 // MARK: - LoadingView class
 class LoadingView: UIView {
 
+    // MARK: Fileprivate properties
     fileprivate let activityIndicatorView = UIActivityIndicatorView()
     fileprivate let darkView = UIView()
     
+    // MARK: Initializations
     override init(frame: CGRect) {
         super.init(frame: frame)
         
