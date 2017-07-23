@@ -3,7 +3,6 @@ osx_image: xcode8.3
 podfile: Podfile
 install:
 - pod install
-- pod update
 xcode_workspace: "Credit Card Validator.xcworkspace"
 xcode_scheme: "Credit Card Validator"
 script: xcodebuild test -workspace "Credit Card Validator.xcworkspace" -scheme "Credit Card Validator" -destination 'platform=iOS Simulator,name=iPhone 6' -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
