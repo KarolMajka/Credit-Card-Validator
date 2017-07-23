@@ -9,6 +9,8 @@
 import UIKit
 
 extension String {
+    
+    // MARK: Public methods
     func getString(withoutSeparator separator: String) -> String {
         return self.components(separatedBy: separator).joined()
     }
@@ -24,6 +26,7 @@ extension String {
         return range
     }
     
+    // MARK: Subscripts
     subscript (i: Int) -> Character {
         return self[index(startIndex, offsetBy: i)]
     }
