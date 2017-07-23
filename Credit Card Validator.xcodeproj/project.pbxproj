@@ -27,6 +27,9 @@
 		A3E407531F21EE1C0033CDFC /* CreditCardTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E407521F21EE1B0033CDFC /* CreditCardTextField.swift */; };
 		A3E5B27E1F227963003B632E /* ValidCardNumbers.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3E5B27D1F227963003B632E /* ValidCardNumbers.plist */; };
 		A3E5B2801F227980003B632E /* InvalidCardNumbers.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3E5B27F1F227980003B632E /* InvalidCardNumbers.plist */; };
+		A3E5B2821F250490003B632E /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E5B2811F250490003B632E /* UIButton+Extension.swift */; };
+		A3E5B2841F250DA5003B632E /* String+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E5B2831F250DA5003B632E /* String+Localizable.swift */; };
+		A3E5B2871F250F18003B632E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A3E5B2891F250F18003B632E /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,11 @@
 		A3E407521F21EE1B0033CDFC /* CreditCardTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardTextField.swift; sourceTree = "<group>"; };
 		A3E5B27D1F227963003B632E /* ValidCardNumbers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ValidCardNumbers.plist; sourceTree = "<group>"; };
 		A3E5B27F1F227980003B632E /* InvalidCardNumbers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = InvalidCardNumbers.plist; sourceTree = "<group>"; };
+		A3E5B2811F250490003B632E /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		A3E5B2831F250DA5003B632E /* String+Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localizable.swift"; sourceTree = "<group>"; };
+		A3E5B2881F250F18003B632E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A3E5B28A1F250F96003B632E /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		A3E5B28B1F250F96003B632E /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EEC7F75509B1137498A6DFEF /* Pods-Credit Card ValidatorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Credit Card ValidatorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Credit Card ValidatorTests/Pods-Credit Card ValidatorTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -204,6 +212,7 @@
 			children = (
 				A3E4072D1F214CD90033CDFC /* Assets.xcassets */,
 				A3E407321F214CD90033CDFC /* Info.plist */,
+				A3E5B2891F250F18003B632E /* Localizable.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -223,6 +232,8 @@
 			isa = PBXGroup;
 			children = (
 				A3E407501F215FB30033CDFC /* String+Extension.swift */,
+				A3E5B2811F250490003B632E /* UIButton+Extension.swift */,
+				A3E5B2831F250DA5003B632E /* String+Localizable.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -310,6 +321,7 @@
 			knownRegions = (
 				en,
 				Base,
+				pl,
 			);
 			mainGroup = A3E4071A1F214CD80033CDFC;
 			productRefGroup = A3E407241F214CD90033CDFC /* Products */;
@@ -328,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3E407311F214CD90033CDFC /* LaunchScreen.storyboard in Resources */,
+				A3E5B2871F250F18003B632E /* Localizable.strings in Resources */,
 				A3E4072E1F214CD90033CDFC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -452,8 +465,10 @@
 				A36C085B1F22380200563BFC /* CreditCardGenerator.swift in Sources */,
 				A3CA7EEE1F2216DF00630F87 /* CreditCard.swift in Sources */,
 				A3E407271F214CD90033CDFC /* AppDelegate.swift in Sources */,
+				A3E5B2841F250DA5003B632E /* String+Localizable.swift in Sources */,
 				A36C085E1F224FE500563BFC /* LoadingView.swift in Sources */,
 				A3CA7EE81F22121000630F87 /* MainViewModel.swift in Sources */,
+				A3E5B2821F250490003B632E /* UIButton+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,8 +495,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				A3E407301F214CD90033CDFC /* Base */,
+				A3E5B28A1F250F96003B632E /* pl */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A3E5B2891F250F18003B632E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A3E5B2881F250F18003B632E /* Base */,
+				A3E5B28B1F250F96003B632E /* pl */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -491,6 +516,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -541,6 +567,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";

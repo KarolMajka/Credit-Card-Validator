@@ -59,7 +59,7 @@ class MainViewController: UIViewController {
         label.autoPinEdge(toSuperviewEdge: .left, withInset: 40)
         label.autoPinEdge(toSuperviewEdge: .right, withInset: 40)
         label.autoAlignAxis(toSuperviewAxis: .horizontal)
-        
+
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -73,8 +73,8 @@ class MainViewController: UIViewController {
         button.autoAlignAxis(.vertical, toSameAxisOf: button.superview!, withOffset: -75)
         button.autoSetDimension(.width, toSize: 120)
 
-        button.setTitle("Validate", for: .normal)
-        button.backgroundColor = UIColor.red
+        button.defaultConfig()
+        button.setTitle(String.validateButton, for: .normal)
         button.addTarget(self, action: #selector(self.validateTapped), for: .touchUpInside)
         return button
     }()
@@ -87,8 +87,8 @@ class MainViewController: UIViewController {
         button.autoAlignAxis(.vertical, toSameAxisOf: button.superview!, withOffset: 75)
         button.autoMatch(.width, to: .width, of: self.validateButton)
         
-        button.setTitle("Generate", for: .normal)
-        button.backgroundColor = UIColor.red
+        button.defaultConfig()
+        button.setTitle(String.generateButton, for: .normal)
         button.addTarget(self, action: #selector(self.generateTapped), for: .touchUpInside)
         return button
     }()
@@ -115,6 +115,7 @@ class MainViewController: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
         self.view.addGestureRecognizer(tap)
+        self.view.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
         
         ccNumberTextField.isHidden = false
         ccDateTextField.isHidden = false
