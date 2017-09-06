@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: - MainViewModelDelegate protocol
-protocol MainViewModelDelegate {
+protocol MainViewModelDelegate: class {
     func validateMessageDidChange(_ message: String)
     func hideLoadingView()
     func showLoadingView()
@@ -17,13 +17,13 @@ protocol MainViewModelDelegate {
 
 // MARK: - MainViewModel
 class MainViewModel {
-    
+
     // MARK: Fileprivate properties
     fileprivate let networking = NetworkLoader.shared
     fileprivate let generator = CreditCardGenerator()
-    
+
     // MARK: Public properties
-    public var delegate: MainViewModelDelegate?
+    weak public var delegate: MainViewModelDelegate?
     public var validateMessage = "" {
         didSet {
             self.delegate?.validateMessageDidChange(validateMessage)
@@ -51,7 +51,7 @@ extension MainViewModel {
             }
         })
     }
-    
+
     func generate() -> String {
         self.generator.generate()
         var creditCardNumber = self.generator.toString()

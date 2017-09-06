@@ -11,7 +11,7 @@ import PureLayout
 
 // MARK: - MainViewController class
 class MainViewController: UIViewController {
-    
+
     // MARK: Views
     fileprivate lazy var ccNumberTextField: CreditCardNumberTextField = {
         let textField = CreditCardNumberTextField()
@@ -55,7 +55,7 @@ class MainViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(label)
-        
+
         label.autoPinEdge(toSuperviewEdge: .left, withInset: 40)
         label.autoPinEdge(toSuperviewEdge: .right, withInset: 40)
         label.autoAlignAxis(toSuperviewAxis: .horizontal)
@@ -68,9 +68,9 @@ class MainViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(button)
-        
+
         self.bottomConstraint = button.autoPin(toBottomLayoutGuideOf: self, withInset: 80)
-        button.autoAlignAxis(.vertical, toSameAxisOf: button.superview!, withOffset: -75)
+        button.autoAlignAxis(.vertical, toSameAxisOf: button.superview ?? self.view, withOffset: -75)
         button.autoSetDimension(.width, toSize: 120)
 
         button.defaultConfig()
@@ -84,9 +84,9 @@ class MainViewController: UIViewController {
         self.view.addSubview(button)
 
         button.autoPinEdge(.top, to: .top, of: self.validateButton, withOffset: 0)
-        button.autoAlignAxis(.vertical, toSameAxisOf: button.superview!, withOffset: 75)
+        button.autoAlignAxis(.vertical, toSameAxisOf: button.superview ?? self.view, withOffset: 75)
         button.autoMatch(.width, to: .width, of: self.validateButton)
-        
+
         button.defaultConfig()
         button.setTitle(String.generateButton, for: .normal)
         button.addTarget(self, action: #selector(self.generateTapped), for: .touchUpInside)
@@ -96,12 +96,12 @@ class MainViewController: UIViewController {
         let view = LoadingView()
         view.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(view)
-        
+
         view.autoPinEdgesToSuperviewEdges()
-        
+
         return view
     }()
-    
+
     // MARK: Fileprivate properties
     fileprivate let viewModel = MainViewModel()
     fileprivate var topConstraint: NSLayoutConstraint!
@@ -110,13 +110,13 @@ class MainViewController: UIViewController {
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.viewModel.delegate = self
-        
+
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
         self.view.addGestureRecognizer(tap)
         self.view.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
-        
+
         ccNumberTextField.isHidden = false
         ccDateTextField.isHidden = false
         ccCVCTextField.isHidden = false
@@ -124,20 +124,20 @@ class MainViewController: UIViewController {
         generateButton.isHidden = false
         validateLabel.isHidden = false
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         NotificationCenter.default
             .addObserver(self,
                          selector: #selector(self.orientationChanged(notification:)),
                          name: NSNotification.Name.UIDeviceOrientationDidChange,
                          object: nil)
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+
         NotificationCenter.default
             .removeObserver(self,
                             name: NSNotification.Name.UIDeviceOrientationDidChange,
@@ -150,13 +150,13 @@ extension MainViewController {
     func validateTapped() {
         self.viewModel.validate(creditCard: ccNumberTextField.getNumber())
     }
-    
+
     func generateTapped() {
         let creditCardNumber = self.viewModel.generate()
         self.ccNumberTextField.text = creditCardNumber
         self.ccNumberTextField.number = creditCardNumber
     }
-    
+
     func hideKeyboard() {
         self.ccNumberTextField.resignFirstResponder()
         self.ccDateTextField.resignFirstResponder()
@@ -189,7 +189,7 @@ fileprivate extension MainViewController {
 extension MainViewController: CreditCardDelegate {
     func filled(_ filled: Bool, forTextField textField: UITextField) {
         guard let ccTextField = textField as? CreditCardTextField else { return }
-        
+
         switch ccTextField {
         case ccNumberTextField:
             if filled && ccTextField.isFirstResponder {
@@ -250,7 +250,7 @@ extension MainViewController: MainViewModelDelegate {
     func showLoadingView() {
         self.loadingView.show()
     }
-    
+
     func hideLoadingView() {
         self.loadingView.hide()
     }

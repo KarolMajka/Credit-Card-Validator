@@ -32,7 +32,7 @@ class NetworkLoader {
 
     // MARK: Shared Instance
     private init() { }
-    
+
     static let shared: NetworkLoader = {
         let instance = NetworkLoader()
         return instance
@@ -59,15 +59,17 @@ fileprivate extension NetworkLoader {
         components.scheme = NetworkLoader.scheme
         components.host = NetworkLoader.host
         components.path = NetworkLoader.path
-        
-        components.queryItems = []
-        components.queryItems!.append(NetworkLoader.queryItemformat)
-        components.queryItems!.append(NetworkLoader.queryItemApiKey)
-        components.queryItems!.append(URLQueryItem(name: NetworkLoader.queryItemNameForCreditCard, value: creditCard))
+
+        var queryItems: [URLQueryItem] = []
+        queryItems.append(NetworkLoader.queryItemformat)
+        queryItems.append(NetworkLoader.queryItemApiKey)
+        let urlQueryItem = URLQueryItem(name: NetworkLoader.queryItemNameForCreditCard, value: creditCard)
+        queryItems.append(urlQueryItem)
+        components.queryItems = queryItems
 
         return components.url!
     }
-    
+
     static func toDictionary(jsonData: Data) -> [String:Any]? {
         do {
             let dict = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as? [String:Any]
@@ -80,13 +82,15 @@ fileprivate extension NetworkLoader {
 
 // MARK: DataDownloading
 extension NetworkLoader: DataDownloading {
-    func download(creditCard: String, block: @escaping (CreditCard) -> Void, error errorBlock: @escaping (Error) -> Void) {
+    func download(creditCard: String,
+                  block: @escaping (CreditCard) -> Void,
+                  error errorBlock: @escaping (Error) -> Void) {
         let url = self.createURL(creditCard: creditCard)
         self.download(from: url, block: { data in
             if let dict = NetworkLoader.toDictionary(jsonData: data) {
-                if let creditCardModel = CreditCard.init(json: dict) {
+                if let creditCardModel = CreditCard(json: dict) {
                     block(creditCardModel)
-                } else if let bincodesError = BincodesError.init(json: dict) {
+                } else if let bincodesError = BincodesError(json: dict) {
                     let userInfo: [AnyHashable : Any] = [NSLocalizedDescriptionKey: bincodesError.message]
                     let err = NSError(domain: "", code: Int(bincodesError.error) ?? -1, userInfo: userInfo)
                     errorBlock(err)

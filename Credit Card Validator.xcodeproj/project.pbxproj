@@ -260,6 +260,7 @@
 				A3E407211F214CD90033CDFC /* Resources */,
 				88DF158E59964D619C619414 /* [CP] Embed Pods Frameworks */,
 				88EA370EF22E5DF111B6E323 /* [CP] Copy Pods Resources */,
+				A3A4149E1F5FFA6100A97514 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -431,6 +432,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Credit Card Validator/Pods-Credit Card Validator-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		A3A4149E1F5FFA6100A97514 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		AA5FBCC870CB2D22B9ACBF34 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

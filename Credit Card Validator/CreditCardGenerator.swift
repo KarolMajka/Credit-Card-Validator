@@ -17,10 +17,10 @@ enum CreditCardType: Int {
 
 // MARK: - CreditCardGenerator class
 class CreditCardGenerator {
-    
+
     // MARK: Fileprivate properties
     fileprivate static let digits: Int = 16
-    
+
     // MARK: Public properties
     var array: [Int] = Array(repeating: 0, count: CreditCardGenerator.digits)
 }
@@ -30,7 +30,7 @@ fileprivate extension CreditCardGenerator {
     func random(from: UInt32, to: UInt32) -> Int {
         return Int(arc4random_uniform(to-from+1)+from)
     }
-    
+
     func generateRestOfDigits(start: Int) {
         for i in start...CreditCardGenerator.digits-1 {
             array[i] = random(from: 1, to: 9)
@@ -47,27 +47,25 @@ extension CreditCardGenerator {
             array[0] = 5
             array[1] = random(from: 1, to: 5)
         }
-        
+
         let start = type == .visa ? 1 : 2
         repeat {
             generateRestOfDigits(start: start)
         } while !isValid()
     }
-    
+
     public func generate() {
-        let creditCardType = CreditCardType.init(rawValue: random(from: 0, to: 1))!
+        let creditCardType = CreditCardType(rawValue: random(from: 0, to: 1)) ?? .mastercard
         self.generate(creditCardType)
     }
-    
+
     public func isValid() -> Bool {
         var duplicateArray = array
-        
-        for i in 0...CreditCardGenerator.digits-1 {
-            if i%2 == 0 {
-                duplicateArray[i] *= 2
-                if duplicateArray[i] >= 10 {
-                    duplicateArray[i] = duplicateArray[i]%10 + duplicateArray[i]/10
-                }
+
+        for i in stride(from: 0, to: CreditCardGenerator.digits, by: 2) {
+            duplicateArray[i] *= 2
+            if duplicateArray[i] >= 10 {
+                duplicateArray[i] = duplicateArray[i]%10 + duplicateArray[i]/10
             }
         }
         let sum = duplicateArray.reduce(0, +)
@@ -77,7 +75,7 @@ extension CreditCardGenerator {
             return false
         }
     }
-    
+
     public func toString() -> String {
         return self.array.flatMap({ String($0) }).joined()
     }

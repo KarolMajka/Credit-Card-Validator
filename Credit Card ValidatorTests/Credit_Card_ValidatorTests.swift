@@ -9,12 +9,12 @@
 import XCTest
 @testable import Credit_Card_Validator
 
-class Credit_Card_ValidatorTests: XCTestCase {
-    
+class CreditCardValidatorTests: XCTestCase {
+
     var validCards: [String]!
     var invalidCards: [String]!
     var generator: CreditCardGenerator!
-    
+
     override func setUp() {
         super.setUp()
         continueAfterFailure = false
@@ -22,11 +22,11 @@ class Credit_Card_ValidatorTests: XCTestCase {
         self.invalidCards = self.loadPropertyList("InvalidCardNumbers")
         self.generator = CreditCardGenerator()
     }
-    
+
     func loadPropertyList(_ name: String) -> [String] {
         let path = Bundle(for: type(of: self)).path(forResource: name, ofType: "plist")
         XCTAssertNotNil(path)
-        
+
         let array = NSArray(contentsOfFile: path!) as? [String]
         XCTAssertNotNil(array)
         return array!
@@ -45,24 +45,24 @@ class Credit_Card_ValidatorTests: XCTestCase {
         XCTAssert(array.count == 16)
         return array
     }
-    
+
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
+
     func testValidCards() {
         for card in self.validCards {
             self.generator.array = self.toArray(card: card)
             XCTAssert(self.generator.isValid())
         }
     }
-    
+
     func testInvalidCards() {
         for card in self.invalidCards {
             self.generator.array = self.toArray(card: card)
             XCTAssert(!self.generator.isValid())
         }
     }
-    
+
 }

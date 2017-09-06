@@ -8,7 +8,7 @@
 
 import UIKit
 
-fileprivate func NSLocalizedString(_ key: String) -> String {
+private func NSLocalizedString(_ key: String) -> String {
     return NSLocalizedString(key, comment: "")
 }
 
